@@ -1,78 +1,49 @@
 import React from 'react';
-import { Plus } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
-  onOpenAddModal: () => void;
   onOpenCommission: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  onOpenAddModal,
-  onOpenCommission
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenCommission }) => {
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#090a0d]/90 backdrop-blur-md border-b border-zinc-800/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
-        {/* Zone 1: Brand Wordmark (Single text element in display face) */}
+    <header className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      <div className="pointer-events-auto flex items-center justify-between gap-6 md:gap-10 px-6 py-2.5 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.7)] transition-all">
+        {/* Brand Wordmark */}
         <a
           href="#"
-          className="text-lg md:text-xl font-extrabold tracking-tight text-white whitespace-nowrap shrink-0 hover:text-amber-400 transition-colors font-display"
+          className="text-sm font-bold tracking-tight text-white whitespace-nowrap hover:text-amber-400 transition-colors font-display"
         >
           AURA // ARCHVIZ
         </a>
 
-        {/* Zone 2: 4–5 concise single-line text links */}
-        <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-medium text-zinc-400 font-mono">
-          <a
-            href="#works"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
-          >
+        {/* Floating Nav Links */}
+        <nav className="hidden md:flex items-center gap-6 text-[13px] font-medium text-zinc-300">
+          <a href="#works" className="hover:text-white transition-colors">
             Works
           </a>
-          <a
-            href="#tours360"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
-          >
-            360° Virtual
+          <a href="#tours360" className="hover:text-white transition-colors">
+            360° Tours
           </a>
-          <a
-            href="#cinematics"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
-          >
-            Cinematics
+          <a href="#cinematics" className="hover:text-white transition-colors">
+            Films
           </a>
-          <a
-            href="#studio"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
-          >
+          <a href="#studio" className="hover:text-white transition-colors">
             Studio
           </a>
-          <a
-            href="#inquire"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
-          >
-            Inquire
+          <a href="#inquire" className="hover:text-white transition-colors">
+            Contact
           </a>
         </nav>
 
-        {/* Zone 3: 1 primary action */}
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={onOpenAddModal}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-mono font-medium text-zinc-300 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-lg transition-colors whitespace-nowrap"
-            title="Upload and inspect your own 360, video or render files"
-          >
-            <Plus className="w-3.5 h-3.5 text-amber-400" />
-            <span className="hidden sm:inline">Add / Test Work</span>
-          </button>
-
-          <button
-            onClick={onOpenCommission}
-            className="px-4 py-2 text-xs font-bold text-black bg-amber-400 hover:bg-amber-300 rounded-lg transition-all whitespace-nowrap shadow-sm hover:scale-[1.02]"
-          >
-            Commission Studio
-          </button>
-        </div>
+        {/* Primary CTA pill */}
+        <button
+          onClick={onOpenCommission}
+          className="px-4 py-1.5 text-xs font-semibold text-black bg-white hover:bg-zinc-200 rounded-full transition-all flex items-center gap-1.5 shadow-sm hover:scale-[1.03]"
+        >
+          <span>Get in Touch</span>
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </button>
       </div>
     </header>
   );

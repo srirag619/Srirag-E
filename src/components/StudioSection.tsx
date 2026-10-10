@@ -1,5 +1,4 @@
 import React from 'react';
-import { Cpu, Camera, Lightbulb, MonitorCheck, ShieldCheck, Award } from 'lucide-react';
 
 export const StudioSection: React.FC = () => {
   const softwareStack = [
@@ -25,17 +24,17 @@ export const StudioSection: React.FC = () => {
   ];
 
   return (
-    <section id="studio" className="py-20 border-b border-zinc-800/80 bg-[#090a0d]">
+    <section id="studio" className="py-24 border-b border-white/10 bg-[#07080a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Split Grid: Left Studio Story, Right Pipeline */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Philosophy & Overview */}
+          {/* Left Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="text-xs uppercase tracking-widest text-amber-400 font-mono font-medium">
               Studio Methodology & Craft
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display text-balance">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display text-balance">
               Where architectural discipline meets cinematic fidelity.
             </h2>
 
@@ -49,22 +48,22 @@ export const StudioSection: React.FC = () => {
 
             {/* Core Pillars */}
             <div className="pt-4 space-y-3">
-              <div className="p-4 bg-[#0e1015] border border-zinc-800 rounded-xl">
-                <div className="text-xs font-bold text-white mb-1">01. Latitudinal Sun & Atmospheric Accuracy</div>
+              <div className="p-5 bg-black/40 border border-white/10 rounded-2xl">
+                <div className="text-xs font-bold text-white mb-1 font-display">01. Latitudinal Sun & Atmospheric Accuracy</div>
                 <p className="text-[11px] text-zinc-400">
                   Calibrated HDRI domes synced to geographical coordinates, solar elevation, and real-world turbidity.
                 </p>
               </div>
 
-              <div className="p-4 bg-[#0e1015] border border-zinc-800 rounded-xl">
-                <div className="text-xs font-bold text-white mb-1">02. Spatial 360° WebGL Integration</div>
+              <div className="p-5 bg-black/40 border border-white/10 rounded-2xl">
+                <div className="text-xs font-bold text-white mb-1 font-display">02. Spatial 360° WebGL Integration</div>
                 <p className="text-[11px] text-zinc-400">
                   Direct browser-based virtual tours with interactive architectural callouts and zero app installation.
                 </p>
               </div>
 
-              <div className="p-4 bg-[#0e1015] border border-zinc-800 rounded-xl">
-                <div className="text-xs font-bold text-white mb-1">03. Cinema-Grade Anamorphic Lenses</div>
+              <div className="p-5 bg-black/40 border border-white/10 rounded-2xl">
+                <div className="text-xs font-bold text-white mb-1 font-display">03. Cinema-Grade Anamorphic Lenses</div>
                 <p className="text-[11px] text-zinc-400">
                   Optical characteristics emulating Cooke and ARRI Master Primes with natural chromatic behavior.
                 </p>
@@ -77,14 +76,14 @@ export const StudioSection: React.FC = () => {
             {/* Pipeline Stack */}
             <div>
               <div className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-medium mb-4">
-                Dedicated Software Pipeline
+                Production Pipeline
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {softwareStack.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 bg-[#0e1015] border border-zinc-800 rounded-xl flex flex-col justify-between"
+                    className="p-4 bg-black/40 border border-white/10 rounded-2xl flex flex-col justify-between"
                   >
                     <div className="text-xs font-bold text-white tracking-wide font-mono">
                       {item.name}
@@ -98,7 +97,7 @@ export const StudioSection: React.FC = () => {
             </div>
 
             {/* Trusted Architecture Studios */}
-            <div className="pt-6 border-t border-zinc-800/80">
+            <div className="pt-8 border-t border-white/10">
               <div className="text-xs uppercase tracking-widest text-zinc-400 font-mono font-medium mb-4">
                 Collaborating Architecture Practices
               </div>
@@ -107,7 +106,7 @@ export const StudioSection: React.FC = () => {
                 {trustedArchitects.map((arch, idx) => (
                   <div
                     key={idx}
-                    className="p-3 bg-[#0e1015] border border-zinc-850 rounded-lg text-center flex items-center justify-center min-h-[56px]"
+                    className="p-3.5 bg-black/40 border border-white/10 rounded-xl text-center flex items-center justify-center min-h-[56px]"
                   >
                     <span className="text-xs font-medium text-zinc-300 font-display">
                       {arch}

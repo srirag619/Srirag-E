@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Film, Play, Sparkles, Clock, Clapperboard } from 'lucide-react';
+import { Film, Play, Clock, ArrowUpRight } from 'lucide-react';
 import { Project } from '../types/portfolio';
 import { VideoPlayer } from './VideoPlayer';
 
@@ -23,29 +23,29 @@ export const CinematicsSection: React.FC<CinematicsSectionProps> = ({
   if (!activeProject) return null;
 
   return (
-    <section id="cinematics" className="py-20 border-b border-zinc-800/80 bg-[#090a0d]">
+    <section id="cinematics" className="py-24 border-b border-white/10 bg-[#07080a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-sky-400 font-mono font-medium mb-2">
               <Film className="w-4 h-4" />
-              <span>Cinematics & Film Direction</span>
+              <span>Cinematics & Motion</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-              Architectural Film & Flythroughs
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
+              Architectural Films
             </h2>
             <p className="text-sm text-zinc-400 mt-2 max-w-xl">
-              Choreographed drone trajectories, daylight transitions, and atmospheric camera moves rendered in real-time Unreal Engine 5 and multi-pass offline engines.
+              Choreographed drone trajectories, daylight transitions, and atmospheric camera moves rendered in real-time Unreal Engine 5.
             </p>
           </div>
 
           <div className="text-xs text-zinc-400 font-mono">
-            <span>DCI 4K · 2.39:1 Anamorphic · DaVinci ACES Pipeline</span>
+            <span>DCI 4K · 2.39:1 Anamorphic · DaVinci ACES</span>
           </div>
         </div>
 
-        {/* Video Grid Layout: Main Player (Left 8 cols), Film Reel Selector (Right 4 cols) */}
+        {/* Video Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Video Viewport (Span 8) */}
           <div className="lg:col-span-8 space-y-4">
@@ -56,13 +56,13 @@ export const CinematicsSection: React.FC<CinematicsSectionProps> = ({
               title={activeProject.title}
               quality={activeProject.videoQuality}
               timestamps={activeProject.videoTimestamps}
-              className="aspect-video w-full rounded-2xl shadow-2xl"
+              className="aspect-video w-full rounded-3xl shadow-2xl border border-white/10"
             />
 
             {/* Video Meta Info */}
-            <div className="p-5 bg-[#0e1015] border border-zinc-800 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="p-5 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-base font-bold text-white tracking-tight">
+                <h3 className="text-base font-bold text-white tracking-tight font-display">
                   {activeProject.title}
                 </h3>
                 <p className="text-xs text-zinc-400 mt-0.5 font-mono">
@@ -72,9 +72,10 @@ export const CinematicsSection: React.FC<CinematicsSectionProps> = ({
 
               <button
                 onClick={() => onOpenProjectModal(activeProject)}
-                className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-semibold rounded-lg transition-colors whitespace-nowrap self-start sm:self-auto"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-full border border-white/10 transition-colors whitespace-nowrap flex items-center gap-1.5 self-start sm:self-auto"
               >
-                Project Breakdown
+                <span>Project Breakdown</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -82,7 +83,7 @@ export const CinematicsSection: React.FC<CinematicsSectionProps> = ({
           {/* Film Reel Selector (Span 4) */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-mono uppercase text-zinc-400 font-semibold tracking-wider px-1">
-              Selected Architectural Films ({videoProjects.length})
+              Selected Films ({videoProjects.length})
             </h4>
 
             <div className="space-y-3">
@@ -92,14 +93,14 @@ export const CinematicsSection: React.FC<CinematicsSectionProps> = ({
                   <div
                     key={v.id}
                     onClick={() => setActiveVideoId(v.id)}
-                    className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                    className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                       isSelected
-                        ? 'bg-zinc-900 border-sky-400/80 ring-1 ring-sky-400/30'
-                        : 'bg-[#0f1117] border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-900/60'
+                        ? 'bg-white/10 border-white/30 shadow-xl'
+                        : 'bg-black/40 border-white/10 hover:border-white/20 hover:bg-white/5'
                     }`}
                   >
-                    <div className="flex gap-3">
-                      <div className="relative w-24 h-16 rounded-lg overflow-hidden bg-black shrink-0 border border-zinc-800">
+                    <div className="flex gap-3.5">
+                      <div className="relative w-24 h-16 rounded-xl overflow-hidden bg-black shrink-0 border border-white/10">
                         <img
                           src={v.coverImage}
                           alt={v.title}

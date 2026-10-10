@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { initialProjects } from './data/projectsData';
 import { Project } from './types/portfolio';
 import { Navbar } from './components/Navbar';
@@ -16,45 +16,12 @@ import { StudioSection } from './components/StudioSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
-import { AddProjectModal } from './components/AddProjectModal';
 import { PanoramaViewer } from './components/PanoramaViewer';
 
-const STORAGE_KEY = 'aura_viz_projects_v1';
-
 export default function App() {
-  const [projects, setProjects] = useState<Project[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
-    } catch (e) {
-      console.error('Failed to parse saved projects:', e);
-    }
-    return initialProjects;
-  });
-
+  const [projects] = useState<Project[]>(initialProjects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
   const [fullscreen360Project, setFullscreen360Project] = useState<Project | null>(null);
-
-  // Sync projects to localStorage
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
-    } catch (e) {
-      console.warn('LocalStorage save failed (quota exceeded):', e);
-    }
-  }, [projects]);
-
-  const handleAddProject = (newProject: Project) => {
-    setProjects((prev) => [newProject, ...prev]);
-  };
-
-  const handleOpen360Full = (project: Project) => {
-    setFullscreen360Project(project);
-  };
 
   const scrollToWorks = () => {
     const el = document.getElementById('works');
@@ -67,12 +34,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#090a0d] text-zinc-100 selection:bg-amber-400 selection:text-black">
-      {/* Top Bar Navigation */}
-      <Navbar
-        onOpenAddModal={() => setIsAddModalOpen(true)}
-        onOpenCommission={scrollToInquire}
-      />
+    <div className="min-h-screen bg-[#07080a] text-zinc-100 selection:bg-white selection:text-black">
+      {/* Floating Glassmorphism Navbar */}
+      <Navbar onOpenCommission={scrollToInquire} />
 
       {/* Hero Section */}
       <Hero
@@ -80,19 +44,17 @@ export default function App() {
         onOpen360Full={() => setFullscreen360Project(projects.find(p => p.mediaType === '360') || null)}
       />
 
-      {/* Curated Works Gallery */}
+      {/* Curated Works Gallery (Bento-Box Grid) */}
       <WorksGallery
         projects={projects}
         onSelectProject={(p) => setSelectedProject(p)}
         onOpenPanorama={(p) => setFullscreen360Project(p)}
-        onOpenAddModal={() => setIsAddModalOpen(true)}
       />
 
       {/* Interactive 360° VR Tours Showcase Section */}
       <Tours360Section
         projects={projects}
         onOpenProjectModal={(p) => setSelectedProject(p)}
-        onOpenAddModal={() => setIsAddModalOpen(true)}
       />
 
       {/* Cinematic Films & Drone Flythroughs Section */}
@@ -123,14 +85,7 @@ export default function App() {
         }}
       />
 
-      {/* Add / Test Custom Work Modal */}
-      <AddProjectModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        onAddProject={handleAddProject}
-      />
-
-      {/* Dedicated Immersive Fullscreen 360 Modal */}
+      {/* Dedicated Immersive Fullscreen 360 Modal with #modal-360 sizing */}
       {fullscreen360Project && (
         <PanoramaViewer
           isModal

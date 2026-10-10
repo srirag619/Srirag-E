@@ -49,7 +49,7 @@ export const CompareSlider: React.FC<CompareSliderProps> = ({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
-      className={`relative select-none overflow-hidden rounded-xl border border-zinc-800 bg-black cursor-ew-resize group shadow-2xl ${className}`}
+      className={`relative select-none overflow-hidden rounded-3xl border border-white/10 bg-black cursor-ew-resize group shadow-2xl ${className}`}
     >
       {/* Background Layer: Final CGI Render (Right / Bottom) */}
       <img
@@ -79,10 +79,10 @@ export const CompareSlider: React.FC<CompareSliderProps> = ({
         className="absolute top-0 bottom-0 z-20 pointer-events-none"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="w-0.5 h-full bg-white shadow-[0_0_10px_rgba(0,0,0,0.8)]" />
+        <div className="w-0.5 h-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.7)]" />
 
         {/* Circular Drag Handle */}
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-zinc-900 flex items-center justify-center shadow-2xl border border-zinc-200 transition-transform group-hover:scale-110">
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-white text-zinc-900 flex items-center justify-center shadow-2xl border border-zinc-200 transition-transform group-hover:scale-110">
           <div className="flex items-center gap-0.5">
             <span className="text-[10px] font-bold">◀</span>
             <span className="text-[10px] font-bold">▶</span>
@@ -91,22 +91,22 @@ export const CompareSlider: React.FC<CompareSliderProps> = ({
       </div>
 
       {/* Labels on opposite sides */}
-      <div className="absolute top-4 left-4 z-20 pointer-events-none">
-        <div className="px-2.5 py-1 bg-black/75 backdrop-blur-md rounded border border-zinc-700/80 flex items-center gap-1.5 text-[11px] font-mono font-medium text-zinc-300">
+      <div className="absolute top-5 left-5 z-20 pointer-events-none">
+        <div className="px-3 py-1.5 bg-black/60 backdrop-blur-xl rounded-full border border-white/10 flex items-center gap-1.5 text-[11px] font-mono font-medium text-zinc-300 shadow-lg">
           <Layers className="w-3 h-3 text-zinc-400" />
           <span>{beforeLabel}</span>
         </div>
       </div>
 
-      <div className="absolute top-4 right-4 z-20 pointer-events-none">
-        <div className="px-2.5 py-1 bg-black/75 backdrop-blur-md rounded border border-zinc-700/80 flex items-center gap-1.5 text-[11px] font-mono font-medium text-amber-400">
+      <div className="absolute top-5 right-5 z-20 pointer-events-none">
+        <div className="px-3 py-1.5 bg-black/60 backdrop-blur-xl rounded-full border border-white/10 flex items-center gap-1.5 text-[11px] font-mono font-medium text-amber-400 shadow-lg">
           <Sparkles className="w-3 h-3 text-amber-400" />
           <span>{afterLabel}</span>
         </div>
       </div>
 
       {/* Bottom Hint */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-[10px] text-zinc-400 font-medium pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full text-[11px] text-zinc-300 font-medium pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
         Drag slider to compare geometry vs render
       </div>
     </div>

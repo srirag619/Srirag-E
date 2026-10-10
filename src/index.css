@@ -33,3 +33,31 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
+
+/* Forced dimensions for 360 viewer container */
+#modal-360 {
+  min-height: 60vh !important;
+  width: 100% !important;
+  position: relative;
+  overflow: hidden;
+  background-color: #06070a;
+}
+
+/* Pannellum viewer integration styling: completely clean Renderstuff-style full-frame UI */
+.pnlm-container {
+  background: #06070a !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.pnlm-load-box,
+.pnlm-lbar,
+.pnlm-lmsg,
+.pnlm-controls-container,
+.pnlm-compass,
+.pnlm-zoom-controls,
+.pnlm-panorama-info {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
