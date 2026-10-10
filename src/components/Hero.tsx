@@ -70,15 +70,15 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-7 flex flex-col">
             <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[540px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               <PanoramaViewer
-                initialScene="penthouse"
-                title="The Horizon Penthouse"
+                customImageUrl={`${import.meta.env.BASE_URL || '/'}Market.jpg`.replace(/\/\//g, '/')}
+                title="Market 360° Experience"
                 subtitle="Live In-Viewport 360° Tour · Drag to Explore"
               />
             </div>
             <div className="mt-3 flex items-center justify-between text-xs text-zinc-500 font-mono px-2">
               <span>Interactive 360° Spatial Tour</span>
               <a href="#tours360" className="text-zinc-300 hover:text-white flex items-center gap-1 transition-colors">
-                <span>All 360° Tours</span>
+                <span>View in 360° Section</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>

@@ -18,10 +18,7 @@ export const WorksGallery: React.FC<WorksGalleryProps> = ({
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'all') return projects;
     if (activeFilter === '360') return projects.filter((p) => p.mediaType === '360');
-    if (activeFilter === 'video') return projects.filter((p) => p.mediaType === 'video');
-    if (activeFilter === 'comparison') return projects.filter((p) => p.mediaType === 'comparison');
-    if (activeFilter === 'interior') return projects.filter((p) => p.category === 'interior');
-    if (activeFilter === 'exterior') return projects.filter((p) => p.category === 'exterior');
+    if (activeFilter === 'image') return projects.filter((p) => p.mediaType === 'image');
     return projects;
   }, [projects, activeFilter]);
 
@@ -33,24 +30,9 @@ export const WorksGallery: React.FC<WorksGalleryProps> = ({
       count: projects.filter((p) => p.mediaType === '360').length
     },
     {
-      id: 'video',
-      label: 'Films',
-      count: projects.filter((p) => p.mediaType === 'video').length
-    },
-    {
-      id: 'comparison',
-      label: 'Clay Breakdowns',
-      count: projects.filter((p) => p.mediaType === 'comparison').length
-    },
-    {
-      id: 'interior',
-      label: 'Interiors',
-      count: projects.filter((p) => p.category === 'interior').length
-    },
-    {
-      id: 'exterior',
-      label: 'Exteriors',
-      count: projects.filter((p) => p.category === 'exterior').length
+      id: 'image',
+      label: 'Stills',
+      count: projects.filter((p) => p.mediaType === 'image').length
     }
   ];
 
@@ -67,7 +49,7 @@ export const WorksGallery: React.FC<WorksGalleryProps> = ({
               Curated Portfolio
             </h2>
             <p className="text-sm sm:text-base text-zinc-400 mt-3 max-w-xl leading-relaxed">
-              High-fidelity architectural CGI stills, cinematic film choreography, and immersive 360° virtual spaces.
+              High-fidelity architectural CGI stills and immersive 360° virtual spaces.
             </p>
           </div>
 
@@ -106,12 +88,9 @@ export const WorksGallery: React.FC<WorksGalleryProps> = ({
         {/* Bento-Box Asymmetric Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
           {filteredProjects.map((project, index) => {
-            // Asymmetric Bento sizing: index 0 and 3 are prominent wide cards
-            const isWide = index === 0 || index === 3;
-            const spanClass = isWide
-              ? 'lg:col-span-8'
-              : index === 1 || index === 2
-              ? 'lg:col-span-4'
+            // Bento sizing: 2 items display balanced and prominent side by side or wide
+            const spanClass = filteredProjects.length === 2
+              ? index === 0 ? 'lg:col-span-7' : 'lg:col-span-5'
               : 'lg:col-span-6';
 
             return (

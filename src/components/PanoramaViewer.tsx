@@ -399,27 +399,29 @@ export const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
         </div>
       )}
 
-      {/* Clean Scene Selector Pills (Discrete corner placement) */}
-      <div className="absolute bottom-5 left-5 pointer-events-auto z-20 flex items-center gap-1.5 p-1 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full">
-        {[
-          { id: 'penthouse', label: 'Penthouse' },
-          { id: 'pavilion', label: 'Pavilion' },
-          { id: 'nordic', label: 'Fjord Villa' },
-          { id: 'atrium', label: 'Atrium' }
-        ].map((sc) => (
-          <button
-            key={sc.id}
-            onClick={() => setCurrentScene(sc.id as any)}
-            className={`px-3 py-1 text-[11px] font-medium rounded-full transition-all ${
-              currentScene === sc.id
-                ? 'bg-white text-black font-semibold shadow'
-                : 'text-white/60 hover:text-white hover:bg-white/10'
-            }`}
-          >
-            {sc.label}
-          </button>
-        ))}
-      </div>
+      {/* Clean Scene Selector Pills (Only for demo procedural scenes when no custom image is specified) */}
+      {!customImageUrl && (
+        <div className="absolute bottom-5 left-5 pointer-events-auto z-20 flex items-center gap-1.5 p-1 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full">
+          {[
+            { id: 'penthouse', label: 'Penthouse' },
+            { id: 'pavilion', label: 'Pavilion' },
+            { id: 'nordic', label: 'Fjord Villa' },
+            { id: 'atrium', label: 'Atrium' }
+          ].map((sc) => (
+            <button
+              key={sc.id}
+              onClick={() => setCurrentScene(sc.id as any)}
+              className={`px-3 py-1 text-[11px] font-medium rounded-full transition-all ${
+                currentScene === sc.id
+                  ? 'bg-white text-black font-semibold shadow'
+                  : 'text-white/60 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              {sc.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

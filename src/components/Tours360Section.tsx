@@ -14,7 +14,7 @@ export const Tours360Section: React.FC<Tours360SectionProps> = ({
 }) => {
   const panoramaProjects = projects.filter((p) => p.mediaType === '360');
   const [selectedProjectId, setSelectedProjectId] = useState<string>(
-    panoramaProjects[0]?.id || 'project-360-penthouse'
+    panoramaProjects[0]?.id || ''
   );
 
   const activeProject =

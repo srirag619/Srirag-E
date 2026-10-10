@@ -25,9 +25,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommission }) => {
           <a href="#tours360" className="hover:text-white transition-colors">
             360° Tours
           </a>
-          <a href="#cinematics" className="hover:text-white transition-colors">
-            Films
-          </a>
           <a href="#studio" className="hover:text-white transition-colors">
             Studio
           </a>
