@@ -2,5 +2,7 @@
   "name": "AURA VIZ — Architectural Visualization & 360° Portfolio",
   "description": "High-end architectural visualization portfolio featuring cinematic CGI stills, film flythroughs, and interactive 360° virtual tours.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
